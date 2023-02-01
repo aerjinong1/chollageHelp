@@ -46,19 +46,35 @@ public class UserController extends BaseController {
 
 
     @RequestMapping("getStuIdBySession")
-    public String getStuIdSession(HttpServletRequest request,
+    public JsonResult<User> getStuIdSession(HttpServletRequest request,
                              HttpServletResponse response,
                              Object handler) throws Exception {
         Object obj = request.getSession().getAttribute("studentID");
-        String str = obj.toString();
-        return str;
+        User user = new User();
+        int id = Integer.parseInt(String.valueOf(obj));
+        user.setStudentId(id);
+
+        return new JsonResult<User>(OK,user);
     }
 
     @RequestMapping("findStudentById")
     public JsonResult<User> findStudentById(int id){
+
         User user = userservice.findStudentById(id);
 
         return new JsonResult<>(OK,user);
 
     }
+    @RequestMapping("findStudentBySession")
+    public JsonResult<User> findStudentBySession(HttpServletRequest request,
+                                                 HttpServletResponse response,
+                                                 Object handler) throws Exception {
+        Object obj = request.getSession().getAttribute("studentID");
+        User user = new User();
+        int id = Integer.parseInt(String.valueOf(obj));
+        User res = userservice.findStudentById(id);
+        return new JsonResult<>(OK,res);
+
+    }
+
 }

@@ -12,30 +12,31 @@
 <body>
 <h1>个人主页</h1>
 <button id="tests">1111111111</button>
+<input id="userid" type="text" class="form-control" value="默认名字" readonly="readonly">
 <input id="username" type="text" class="form-control" value="默认名字" readonly="readonly">
 <script type="text/javascript">
     $(document).ready(function () {
-        $("#tests").click(function () {
-            // console.log($("#form-login").serialize())
-            $.ajax({
-                url: "/user/getStuIdBySession",
-                type: "POST",
-                data: $("#form-change-info").serialize(),
-                dataType: "JSON",
-                success: function (json) {
-                    print(json.state)
-                    console.log(json.state);
-                    if (json.state === 200) {
-                        $("#username").val(json.username);
-                    }
-                },
-                error: function (xhr) {
-                    alert("修改产生异常" + xhr.message);
+        $.ajax({
+            url: "/user/findStudentBySession",
+            type: "POST",
+            data: $("#form-change-info").serialize(),
+            dataType: "JSON",
+            success: function (json) {
+                console.log(json);
+                console.log(json.data.username);
+                console.log(json.data.studentId);
+                if (json.state === 200) {
+                    $("#username").val(json.username);
+                    $("#userid").val(json.uid);
                 }
-            });
-        })
+            },
+            error: function (xhr) {
+                alert("修改产生异常" + xhr.message);
+            }
+        });
 
-    })
+    });
+
 </script>
 </body>
 </html>
