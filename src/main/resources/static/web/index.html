@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+<h3>欢迎来到校园帮帮</h3>
+<a href="info.html" id="info">个人信息</a>
+
+<a href="createOrder.html">发布订单</a>
+
+<a href="receive">接取订单</a>
+
+
+
+<script type="text/javascript">
+    $("#info").click(function () {
+        // console.log($("#form-login").serialize())
+        $.ajax({
+            url:"/user/login",
+            // url:"{:url('user/login')}",
+            type:"POST",
+            data:$("#form_login").serialize(),
+            dataType:"json",
+            success:function (res){
+                if(res.state === 200){
+                    alert("登录成功")
+                    location.href="./index.html"
+                }else {
+                    alert("登录失败")
+                }
+            },
+            error:function (xhr) {
+                alert("登录产生异常"+xhr.message)
+            }
+        })
+    })
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace属性：用于指定当前的映射文件和那个接口进行映射，需要指定接口的文件路径，需要标注包的完整路径接口-->
+
+<mapper namespace="com.collage.wxz.mapper.ListsMapper">
+
+
+    <resultMap id="ListEntityMap" type="com.collage.wxz.entity.Lists">
+        <!--        将表的字段与类的属性不一致的进行匹配！-->
+        <id column="list_id" property="listId"/>
+        <result column="staff_id" property="staffId"/>
+        <result column="customer_id" property="customerId"/>
+        <result column="start_point" property="startPoint"/>
+        <result column="end_point" property="endPoint"/>
+        <result column="customer_message" property="customerMessage"/>
+        <result column="list_create_time" property="listCreateTime"/>
+        <result column="list_complete_time" property="listCompleteTime"/>
+        <result column="list_state" property="listState"/>
+        <result column="list_evaluate_level" property="listEvaluateLevel"/>
+        <result column="list_evaluate_message" property="listEvaluateMessage"/>
+    </resultMap>
+
+    <insert id="addList" useGeneratedKeys="true" keyProperty="listId">
+        INSERT INTO list(list_id,staff_id,customer_id,start_point,
+                            end_point,customer_message,list_create_time,
+                            list_complete_time,list_state,list_evaluate_level,list_evaluate_message
+        )VALUES (
+        #{listId},#{staffId},#{customerId},#{startPoint},
+        #{endPoint},#{customerMessage},#{listCreateTime},
+        #{listCompleteTime},#{listState},#{listEvaluateLevel},#{listEvaluateMessage}
+        )
+    </insert>
+
+    <update id="acceptList" >
+        UPDATE list SET
+        staff_id=#{staffId},
+        list_state=#{listState}
+        WHERE list_id=#{listId}
+    </update>
+
+    <select id="findListById"  resultMap="ListEntityMap">
+        SELECT * FROM list WHERE list_id = #{listId}
+    </select>
+
+
+</mapper>
+

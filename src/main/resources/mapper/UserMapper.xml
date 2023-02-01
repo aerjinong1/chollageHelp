@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace属性：用于指定当前的映射文件和那个接口进行映射，需要指定接口的文件路径，需要标注包的完整路径接口-->
+
+<mapper namespace="com.collage.wxz.mapper.UserMapper">
+
+
+    <resultMap id="UserEntityMap" type="com.collage.wxz.entity.User">
+        <!--        将表的字段与类的属性不一致的进行匹配！-->
+        <id column="student_id" property="studentId"/>
+        <result column="user_sign" property="userSign"/>
+
+    </resultMap>
+
+
+
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="studentId">
+                INSERT INTO customer(student_id,username,
+                password,gender,tel,user_classification,user_sign)
+                VALUES(
+                #{studentId},#{username},#{password},#{gender},#{tel},#{userClassification},#{userSign}
+                )
+            </insert>
+
+    <select id="findByStudentId" resultMap="UserEntityMap">
+                SELECT * FROM customer where student_id=#{studentId}
+            </select>
+
+
+</mapper>
+

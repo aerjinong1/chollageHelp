@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="../bootstrap3/js/holder.js"></script>
+    <link href="../bootstrap3/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <script src="../bootstrap3/jquery-1.9.1.min.js"></script>
+    <script src="../bootstrap3/js/bootstrap.js"></script>
+</head>
+<body>
+<h1>个人主页</h1>
+<button id="tests">1111111111</button>
+<input id="username" type="text" class="form-control" value="默认名字" readonly="readonly">
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#tests").click(function () {
+            // console.log($("#form-login").serialize())
+            $.ajax({
+                url: "/user/getStuIdBySession",
+                type: "POST",
+                data: $("#form-change-info").serialize(),
+                dataType: "JSON",
+                success: function (json) {
+                    print(json.state)
+                    console.log(json.state);
+                    if (json.state === 200) {
+                        $("#username").val(json.username);
+                    }
+                },
+                error: function (xhr) {
+                    alert("修改产生异常" + xhr.message);
+                }
+            });
+        })
+
+    })
+</script>
+</body>
+</html>
