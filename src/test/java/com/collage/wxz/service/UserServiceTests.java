@@ -34,7 +34,16 @@ public class UserServiceTests {
     public void login(){
         User user = new User();
         user.setStudentId(6);
-        user.setPassword("123");
-        userservice.login(0,"123");
+        user.setPassword("122223");
+        userservice.login(0,"12");
+    }
+    @Test
+    public void modifyUserData(){
+        User user = new User();
+        user.setStudentId(1);
+        user.setUsername("9999");
+        user.setGender(0);
+        user.setEmail("999999");
+        System.out.println(userservice.modifyUserData(user));
     }
 }

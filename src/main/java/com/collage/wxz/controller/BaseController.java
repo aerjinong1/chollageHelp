@@ -1,10 +1,7 @@
 package com.collage.wxz.controller;
 
 import com.collage.wxz.entity.User;
-import com.collage.wxz.service.ex.InsertException;
-import com.collage.wxz.service.ex.PasswordNotMatchException;
-import com.collage.wxz.service.ex.ServiceException;
-import com.collage.wxz.service.ex.UsernameDuplicatedException;
+import com.collage.wxz.service.ex.*;
 import com.collage.wxz.util.JsonResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -27,6 +24,9 @@ public class BaseController {
         } else if (e instanceof PasswordNotMatchException) {
             result.setState(5003);
             result.setMessage("更新数据产生未知异常");
+        }else if (e instanceof ModifyUserData){
+            result.setState(5004);
+            result.setMessage("更改出现异常");
         }
         return result;
     }

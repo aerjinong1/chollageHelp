@@ -12,4 +12,6 @@ public interface IUserservice {
     User findStudentById(int studentId);
 
     User getstuId(Integer integer);
+
+    int modifyUserData(User user);
 }

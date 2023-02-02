@@ -28,7 +28,13 @@
     <select id="findByStudentId" resultMap="UserEntityMap">
                 SELECT * FROM customer where student_id=#{studentId}
             </select>
-
+    <update id="modifyUserData" >
+        UPDATE customer SET
+        email = #{email},
+        gender = #{gender},
+        username = #{username}
+        Where student_id=#{studentId}
+    </update>
 
 </mapper>
 

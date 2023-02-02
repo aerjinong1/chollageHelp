@@ -28,4 +28,13 @@ public class UserMapperTests {
         System.out.println(user);
     }
 
+    @Test
+    public void modifyUserData(){
+        User user = new User();
+        user.setUsername("6696");
+        user.setStudentId(1);
+        user.setEmail("112233");
+        user.setGender(1);
+        int res = usermapper.modifyUserData(user);
+    }
 }

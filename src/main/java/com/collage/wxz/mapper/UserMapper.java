@@ -16,5 +16,5 @@ public interface UserMapper {
 
     Integer login(User user);
 
-
+    Integer modifyUserData(User user);
 }

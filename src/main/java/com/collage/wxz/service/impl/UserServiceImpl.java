@@ -56,5 +56,12 @@ public class UserServiceImpl implements IUserservice {
         return null;
     }
 
+    @Override
+    public int  modifyUserData(User user) {
+        System.out.println(usermapper.modifyUserData(user));
+        return usermapper.modifyUserData(user);
+
+    }
+
 
 }

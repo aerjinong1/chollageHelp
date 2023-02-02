@@ -20,6 +20,7 @@ public class UserController extends BaseController {
     @Autowired
     protected IUserservice userservice;
 
+
     @RequestMapping("reg")
     public JsonResult<Void> reg(User user) {
         userservice.reg(user);
@@ -75,6 +76,13 @@ public class UserController extends BaseController {
         User res = userservice.findStudentById(id);
         return new JsonResult<>(OK,res);
 
+    }
+
+    @RequestMapping("modifyUserData")
+    public JsonResult<User> modifyUserData(User user){
+        int l=userservice.modifyUserData(user);
+        User res1 = new User();
+        return new JsonResult<>(OK,res1);
     }
 
 }
