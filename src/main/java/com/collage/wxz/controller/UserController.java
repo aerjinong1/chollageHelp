@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 
 //@Controller
 @RestController
@@ -26,13 +27,26 @@ public class UserController extends BaseController {
         userservice.reg(user);
         return new JsonResult<>(OK);
     }
+    @RequestMapping("autoLoginBySession")
+    public JsonResult<User> autoLoginBySession(HttpServletRequest request,
+                                               HttpServletResponse response,
+                                               Object handler) throws IOException {
+        Object obj = request.getSession().getAttribute("studentID");
+        System.out.println(obj.toString()+"1234");
+        System.out.println("ldgfasjlkfd");
 
+        if (obj == null) {//用户未登录
+            response.sendRedirect("/web/login.html");
+            return new JsonResult<>(0);
+        }
+        return new JsonResult<>(OK);
+    }
     @RequestMapping("login")
     public JsonResult<User> login(int studentId, String password, HttpSession session) {
         User res = userservice.login(studentId,password);
+
+        session.setMaxInactiveInterval(30 * 60); //30分*60秒
         session.setAttribute("studentID", studentId);
-
-
 
         return new JsonResult<User>(OK,res);
     }
