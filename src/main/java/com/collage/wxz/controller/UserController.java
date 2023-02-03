@@ -71,8 +71,10 @@ public class UserController extends BaseController {
                                                  HttpServletResponse response,
                                                  Object handler) throws Exception {
         Object obj = request.getSession().getAttribute("studentID");
+
         User user = new User();
         int id = Integer.parseInt(String.valueOf(obj));
+        System.out.println("session"+"id"+id);
         User res = userservice.findStudentById(id);
         return new JsonResult<>(OK,res);
 
@@ -81,6 +83,10 @@ public class UserController extends BaseController {
     @RequestMapping("modifyUserData")
     public JsonResult<User> modifyUserData(User user){
         int l=userservice.modifyUserData(user);
+        System.out.println(user.toString()+"mapping");
+        if (l==0){
+            return new JsonResult<>(0,user);
+        }
         User res1 = new User();
         return new JsonResult<>(OK,res1);
     }
