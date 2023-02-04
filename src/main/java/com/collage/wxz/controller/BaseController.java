@@ -27,6 +27,9 @@ public class BaseController {
         }else if (e instanceof ModifyUserData){
             result.setState(5004);
             result.setMessage("更改出现异常");
+        }else if (e instanceof ListAddFail){
+            result.setState(6000);
+            result.setMessage("订单添加错误");
         }
         return result;
     }

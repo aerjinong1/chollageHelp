@@ -12,8 +12,9 @@ public class ListsServiceImpl implements IListService {
     @Autowired
     private ListsMapper listsMapper;
     @Override
-    public void addList(Lists list) {
-        listsMapper.addList(list);
+    public int addList(Lists list) {
+        int res = listsMapper.addList(list);
+        return res;
     }
 
     @Override

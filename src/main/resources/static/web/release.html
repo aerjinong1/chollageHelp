@@ -1,35 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Title</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../bootstrap3/js/holder.js"></script>
+    <link href="../bootstrap3/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <!--    <script src="../bootstrap3/jquery-1.9.1.min.js"></script>-->
+    <script src="../bootstrap3/js/bootstrap.js"></script>
+
+    <script type="text/javascript" src="../js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.form.js"></script>
+
 </head>
 <body>
 <h3>我要发货</h3>
-从<input id="from" name="from" type="text" class="form-control" value="" >
-到<input id="to" name="to" type="text" class="form-control" value="" >
+<form id="addList">
+    货物id<input id="StaffId" name="StaffId" type="text" class="form-control" value=""><br>
+    用户id<input id="CustomerId" name="CustomerId" type="text" class="form-control" value=""><br>
+    预计发货时间<input id="ListCreateTime" name="ListCreateTime" type="text" class="form-control" value=""><br>
+    货物状态<input id="listState" name="listState" type="text" class="form-control" value=""><br>
+    发货地址<input id="StartPoint" name="StartPoint" type="text" class="form-control" value=""><br>
+    收货地址<input id="EndPoint" name="EndPoint" type="text" class="form-control" value="">
+    <input type="button" class="btn" id="button_release" value="提交"/>
+</form>
+
 <script>
-  $("#btn-change-info").click(function () {
-    // console.log($("#form-login").serialize())
-    $.ajax({
-      url:"/user/modifyUserData",
-      type:"POST",
-      data:$("#form-change-info").serialize(),
-      dataType:"json",
-      success:function (res){
-        if(res.state === 200){
-          alert("修改成功")
-          location.href="./index.html"
-          console.log(321)
-        }else {
-          alert("修改失败")
-        }
-      },
-      error:function (xhr) {
-        alert("修改产生异常"+xhr.message)
-      }
+    $("#button_release").click(function () {
+        // console.log($("#form-login").serialize())
+        $.ajax({
+            url: "/list/addList",
+            type: "POST",
+            data: $("#addList").serialize(),
+            dataType: "json",
+            success: function (res) {
+                console.log(res)
+                if (res.state === 200) {
+                    alert("提交成功")
+                    location.href = "./release.html"
+                    console.log(321)
+                } else {
+                    alert("提交失败")
+                }
+            },
+            error: function (xhr) {
+                alert("修改产生异常" + xhr.message)
+            }
+        })
     })
-  })
 </script>
 </body>
 </html>

@@ -22,7 +22,6 @@ public class ListMapperTests {
     @Test
     public void addlist(){
         Lists lists = new Lists();
-        lists.setListId(04);
         lists.setStaffId(01);
         lists.setCustomerId(01);
         lists.setStartPoint("a");

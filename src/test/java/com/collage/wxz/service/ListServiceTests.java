@@ -20,6 +20,19 @@ public class ListServiceTests {
     private IListService listService;
 
     @Test
+    public void addlist(){
+        Lists lists = new Lists();
+        lists.setStaffId(01);
+        lists.setCustomerId(01);
+        lists.setStartPoint("a");
+        lists.setEndPoint("b");
+        lists.setListCreateTime(new Date().toString());
+//        lists.setListCompleteTime(new Date());
+        lists.setListState(3);
+
+        listService.addList(lists);
+    }
+    @Test
     public void acceptList(){
         try{
             Lists lists = new Lists();

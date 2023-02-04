@@ -5,7 +5,7 @@ import com.collage.wxz.entity.Lists;
 
 public interface IListService {
 
-    void addList(Lists list);
+    int addList(Lists list);
 
     int acceptList(Lists lists);
 
