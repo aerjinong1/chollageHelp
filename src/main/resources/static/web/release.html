@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<h3>我要发货</h3>
+从<input id="from" name="from" type="text" class="form-control" value="" >
+到<input id="to" name="to" type="text" class="form-control" value="" >
+<script>
+  $("#btn-change-info").click(function () {
+    // console.log($("#form-login").serialize())
+    $.ajax({
+      url:"/user/modifyUserData",
+      type:"POST",
+      data:$("#form-change-info").serialize(),
+      dataType:"json",
+      success:function (res){
+        if(res.state === 200){
+          alert("修改成功")
+          location.href="./index.html"
+          console.log(321)
+        }else {
+          alert("修改失败")
+        }
+      },
+      error:function (xhr) {
+        alert("修改产生异常"+xhr.message)
+      }
+    })
+  })
+</script>
+</body>
+</html>
