@@ -27,6 +27,7 @@ public class ListServiceTests {
         lists.setStartPoint("a");
         lists.setEndPoint("b");
         lists.setListCreateTime(new Date().toString());
+        lists.setPic("./efgh");
 //        lists.setListCompleteTime(new Date());
         lists.setListState(3);
 

@@ -29,7 +29,7 @@ public class ListMapperTests {
         lists.setListCreateTime(new Date().toString());
 //        lists.setListCompleteTime(new Date());
         lists.setListState(3);
-
+        lists.setPic("./abcd");
         listmapper.addList(lists);
 
     }

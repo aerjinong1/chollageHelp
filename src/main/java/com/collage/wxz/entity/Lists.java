@@ -25,4 +25,5 @@ public class Lists implements Serializable {
     String ListEvaluateMessage;//用户评价
     String startPoint;
     String endPoint;
+    String pic;
 }

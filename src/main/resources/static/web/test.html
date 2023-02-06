@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<input type="file" id="file">
+<input type="submit" value="上传" onclick="uploadFile()">
+<h1 id="result"></h1>
+</body>
+
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js">
+</script>
+<script>
+    function uploadFile() {
+        var file = $("#file")[0].files[0];
+        var formData = new FormData();
+        formData.append("file", file);
+        $.ajax({
+            type:"post",
+            url:"/list/upload",
+            processData:false,
+            contentType:false,
+            data:formData,
+            success:function (msg) {
+                console.log(file.toString())
+                console.log(file)
+                $("#result").html(msg);
+            }
+        })
+    }
+</script>
+</html>

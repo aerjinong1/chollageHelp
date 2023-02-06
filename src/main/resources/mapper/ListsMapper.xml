@@ -25,11 +25,11 @@
     <insert id="addList" useGeneratedKeys="true" keyProperty="listId">
         INSERT INTO list(list_id,staff_id,customer_id,start_point,
                             end_point,customer_message,list_create_time,
-                            list_complete_time,list_state,list_evaluate_level,list_evaluate_message
+                            list_complete_time,list_state,list_evaluate_level,list_evaluate_message,pic
         )VALUES (
         #{listId},#{staffId},#{customerId},#{startPoint},
         #{endPoint},#{customerMessage},#{listCreateTime},
-        #{listCompleteTime},#{listState},#{listEvaluateLevel},#{listEvaluateMessage}
+        #{listCompleteTime},#{listState},#{listEvaluateLevel},#{listEvaluateMessage},#{pic}
         )
     </insert>
 
