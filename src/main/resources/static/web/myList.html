@@ -1,10 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../bootstrap3/js/holder.js"></script>
+    <link href="../bootstrap3/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <!--    <script src="../bootstrap3/jquery-1.9.1.min.js"></script>-->
+    <script src="../bootstrap3/js/bootstrap.js"></script>
+
+    <script type="text/javascript" src="../js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.form.js"></script>
+
 </head>
 <body>
+<div id="tests">
+<div id="div2">
 
+</div>
+
+<div class="test" id="test">
+
+</div>
+<div>
+    <input id="input">
+    <button id="add">添加</button>
+    <button id="value">value</button>
+    <button id="copy">copy</button>
+</div>
+</div>
+
+<script>
+    $("#copy").click(function () {
+        const now = new Date();
+        const hour = now.getHours();
+        const minute = now.getMinutes();
+        const second = now.getSeconds();
+        var date = hour + ":" + minute + ":" + second
+
+        var newdiv = document.createElement("div")
+        newdiv.innerHTML = "new div"
+        newdiv.className = "hello"
+
+        var fath = document.getElementById("test");
+        if (fath != null) {
+            fath.insertBefore(newdiv, fath.nextSibling)
+            console.log("pass")
+        }else{
+            console.log("error")
+        }
+
+
+    });
+
+    // $("#value").click(function () {
+    //     div2 = document.getElementById("test");
+    //     var value = document.getElementById("input").value
+    //     console.log("sahjgoa")
+    //     div2.innerHTML = value
+    //
+    // });
+    // $("#add").click(function () {
+    //     // console.log($("#form-login").serialize())
+    //     var div1 = document.getElementById("test");
+    //     const now = new Date();
+    //     const hour = now.getHours();
+    //     const minute = now.getMinutes();
+    //     const ssecond = now.getSeconds();
+    //     var date = hour+":"+minute+":"+ssecond
+    //     div1.innerHTML = date
+    //
+    //     // $.ajax({
+    //     //     url:"/user/login",
+    //     //     // url:"{:url('user/login')}",
+    //     //     type:"POST",
+    //     //     data:$("#form_login").serialize(),
+    //     //     dataType:"json",
+    //     //     success:function (res){
+    //     //         if(res.state === 200){
+    //     //
+    //     //             alert("登录成功")
+    //     //             location.href="./index.html"
+    //     //         }else {
+    //     //             alert("登录失败")
+    //     //         }
+    //     //     },
+    //     //     error:function (xhr) {
+    //     //         alert("登录产生异常"+xhr.message)
+    //     //     }
+    //     // })
+    // })
+</script>
 </body>
-</html>

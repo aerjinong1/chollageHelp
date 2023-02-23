@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../bootstrap3/js/holder.js"></script>
+    <link href="../bootstrap3/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <!--    <script src="../bootstrap3/jquery-1.9.1.min.js"></script>-->
+    <script src="../bootstrap3/js/bootstrap.js"></script>
+
+    <script type="text/javascript" src="../js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.form.js"></script>
+
+</head>
+<body>
+<div id="a">
+
+</div>
+<button id = click>123</button>
+
+<script>
+    $("#click").click(function (){
+        var newdiv = document.createElement("div");
+        newdiv.innerHTML = "js";
+        newdiv.className = "c"
+        document.body.appendChild(newdiv)
+        var fathDiv = document.getElementById("a")
+        if (fathDiv != null){
+            fathDiv.insertBefore(newdiv,fathDiv.nextSibling)
+        }
+    })
+</script>
+
+</body>
+</html>

@@ -15,9 +15,7 @@
 </script>
 <script>
     function uploadFile() {
-        var file = $("#file")[0].files[0];
-        var formData = new FormData();
-        formData.append("file", file);
+
         $.ajax({
             type:"post",
             url:"/list/upload",
@@ -25,8 +23,6 @@
             contentType:false,
             data:formData,
             success:function (msg) {
-                console.log(file.toString())
-                console.log(file)
                 $("#result").html(msg);
             }
         })

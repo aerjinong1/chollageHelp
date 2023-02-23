@@ -18,26 +18,82 @@
 <body>
 <h3>我要发货</h3>
 <form id="addList">
-    货物id<input id="StaffId" name="StaffId" type="text" class="form-control" value=""><br>
-    用户id<input id="CustomerId" name="CustomerId" type="text" class="form-control" value=""><br>
-    预计发货时间<input id="ListCreateTime" name="ListCreateTime" type="text" class="form-control" value=""><br>
-    货物状态<input id="listState" name="listState" type="text" class="form-control" value=""><br>
-    发货地址<input id="StartPoint" name="StartPoint" type="text" class="form-control" value=""><br>
-    收货地址<input id="EndPoint" name="EndPoint" type="text" class="form-control" value="">
+    货物id<input id="StaffId" name="StaffId" type="text" class="form-control" value="1"><br>
+    用户id<input id="CustomerId" name="CustomerId" type="text" class="form-control" value="1"><br>
+    预计发货时间<input id="ListCreateTime" name="ListCreateTime" type="text" class="form-control" value="1"><br>
+    货物状态<input id="listState" name="listState" type="text" class="form-control" value="1"><br>
+    发货地址<input id="StartPoint" name="StartPoint" type="text" class="form-control" value="1"><br>
+    收货地址<input id="EndPoint" name="EndPoint" type="text" class="form-control" value="1">
 
-    <input type="file" name="pic" value="123">
-<!--    <input type="submit" value="上传" onclick="uploadFile()"><br>-->
+    <input type="file" name="pic" id="pic" value="">
+    <!--    <input type="submit" value="上传" onclick="uploadFile()"><br>-->
     <input type="button" class="btn" id="button_release" value="提交"/>
 </form>
 
+<!--<script>-->
+<!--    $("#button_release").click(function () {-->
+<!--        var formData = new FormData();-->
+<!--        var staffId = $("#staffId").val();-->
+<!--        var customerId = $("#customerId").val();-->
+<!--        var listState = $("#listState").val();-->
+<!--        var startPoint = $("#startPoint").val();-->
+<!--        var endPoint = $("#endPoint").val();-->
+<!--        var pic = $("#pic").val();-->
+<!--        formData.append("staffId", staffId);-->
+<!--        formData.append("customerId", customerId);-->
+<!--        formData.append("listState", listState);-->
+<!--        formData.append("startPoint", startPoint);-->
+<!--        formData.append("endPoint", endPoint);-->
+<!--        formData.append("pic", pic);-->
+<!--        $.ajax({-->
+<!--            url: "/list/addList",-->
+<!--            type: "POST",-->
+<!--            data: formData,-->
+<!--            dataType: "json",-->
+<!--            cache: false,-->
+<!--            processData: false,-->
+<!--            contentType: false,-->
+<!--            success: function (res) {-->
+<!--                if (res.state === 200) {-->
+<!--                    alert("提交成功")-->
+<!--                    // location.href = "./release.html"-->
+<!--                    console.log(321)-->
+<!--                } else {-->
+<!--                    alert("提交失败")-->
+<!--                }-->
+<!--            },-->
+<!--            error: function (xhr) {-->
+<!--                console.log(formData.toString())-->
+<!--                alert("修改产生异常" + xhr.message)-->
+<!--            }-->
+<!--        })-->
+<!--    })-->
+<!--    // function uploadFile() {-->
+<!--    //     var file = $("#file")[0].files[0];-->
+<!--    //     var formData = new FormData();-->
+<!--    //     formData.append("file", file);-->
+<!--    //     $.ajax({-->
+<!--    //         type:"post",-->
+<!--    //         url:"/list/upload",-->
+<!--    //         processData:false,-->
+<!--    //         contentType:false,-->
+<!--    //         data:formData,-->
+<!--    //         success:function (msg) {-->
+<!--    //             $("#result").html(msg);-->
+<!--    //         }-->
+<!--    //     })-->
+<!--    // }-->
+<!--// </script>-->
+
 <script>
     $("#button_release").click(function () {
-        // console.log($("#form-login").serialize())
+        console.log($("#pic").val())
+
+        console.log($("#addList").serialize())
         $.ajax({
             url: "/list/addList",
             type: "POST",
             data: $("#addList").serialize(),
-            dataType: "json",
             success: function (res) {
                 if (res.state === 200) {
                     alert("提交成功")

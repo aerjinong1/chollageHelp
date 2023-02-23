@@ -4,6 +4,7 @@ import com.collage.wxz.service.IListService;
 import com.collage.wxz.util.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -23,8 +24,11 @@ public class ListController extends BaseController {
     protected IListService iListService;
 
     @RequestMapping("addList")
-    public JsonResult<Void> addList(Lists lists){
+    public JsonResult<Void> addList(HttpSession session, HttpServletRequest request,
+                                    @RequestParam(value = "file", required = false) MultipartFile file, Lists lists){
         System.out.println(lists.toString());
+//        System.out.println(file);
+        lists.setListCreateTime(new Date().toString());
         if (iListService.addList(lists)==1){
             return new JsonResult<>(OK);
         }else{
