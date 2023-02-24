@@ -51,4 +51,10 @@ public class ListServiceTests {
         }
 
     }
+    @Test
+    public void findListById(){
+        Lists lists = listService.findListById(1);
+        System.out.println(lists.toString());
+        System.out.println(lists.getListState());
+    }
 }

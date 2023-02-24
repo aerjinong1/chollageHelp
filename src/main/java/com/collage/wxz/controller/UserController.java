@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 //@Controller
 @RestController
@@ -105,4 +106,14 @@ public class UserController extends BaseController {
         return new JsonResult<>(OK,res1);
     }
 
+    @RequestMapping( "getListByStuId")
+    public List getListByStuId(HttpServletRequest request,
+                                HttpServletResponse response){
+        Object obj = request.getSession().getAttribute("studentID");
+        int stu_id = Integer.parseInt(String.valueOf(obj));
+
+        List list = userservice.getListByStuId(stu_id);
+        System.out.println(list+"123123");
+        return list;
+    }
 }

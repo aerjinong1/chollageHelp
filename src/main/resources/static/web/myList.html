@@ -16,23 +16,63 @@
 
 </head>
 <body>
-<div id="tests">
-<div id="div2">
 
-</div>
 
 <div class="test" id="test">
+    <div>
+        <input id="input">
+        <button id="add">添加</button>
+        <button id="value">value</button>
+        <button id="copy">copy</button>
+    </div>
+</div>
+<div id="mylist">
 
-</div>
-<div>
-    <input id="input">
-    <button id="add">添加</button>
-    <button id="value">value</button>
-    <button id="copy">copy</button>
-</div>
 </div>
 
 <script>
+    $(document).ready(function () {
+        $.ajax({
+            url: "/user/getListByStuId",
+            type: "POST",
+            // data: $("#form-change-info").serialize(),
+            dataType: "JSON",
+            success: function (json) {
+                console.log(json);
+                for (const jsonKey in json) {
+                    console.log(jsonKey)
+                    $.ajax({
+                        url: "/list/findListById",
+                        type: "POST",
+                        data: {"ListId":json[jsonKey]},
+                        dataType: "JSON",
+                        success: function (list) {
+                            // console.log(list+"list")
+                            // console.log(jsonKey.toString()+"key")
+
+                            console.log(list.data.ListId)
+                            // let str = "";
+                            // str = "<tr>"+
+                            //     "<td>"+list.data()
+                        },
+                        error:function (xhr){
+                            console.log(jsonKey)
+                            alert("嘿嘿嘿哈")
+                        }
+                    })
+                    var newdiv = document.createElement("div")
+                    var mylist = document.getElementById("mylist")
+                    mylist.appendChild(newdiv)
+                    newdiv.innerHTML = jsonKey
+
+                }
+            },
+            error: function (xhr) {
+                alert("外比巴卜")
+            }
+        })
+    })
+
     $("#copy").click(function () {
         const now = new Date();
         const hour = now.getHours();
@@ -41,17 +81,12 @@
         var date = hour + ":" + minute + ":" + second
 
         var newdiv = document.createElement("div")
-        newdiv.innerHTML = "new div"
-        newdiv.className = "hello"
-
-        var fath = document.getElementById("test");
-        if (fath != null) {
-            fath.insertBefore(newdiv, fath.nextSibling)
-            console.log("pass")
-        }else{
-            console.log("error")
+        var root = document.getElementById("test")
+        if (root != null) {
+            root.appendChild(newdiv)
+            newdiv.innerHTML = date
+            root.insertBefore(newdiv, root.nextSibling)
         }
-
 
     });
 

@@ -32,8 +32,8 @@ public class ListsServiceImpl implements IListService {
     }
 
     @Override
-    public Lists findListById(int id) {
-        Lists lists1 = listsMapper.findListById(id);
+    public Lists findListById(Integer listId) {
+        Lists lists1 = listsMapper.findListById(listId);
         return lists1;
     }
 }

@@ -11,6 +11,7 @@
         <!--        将表的字段与类的属性不一致的进行匹配！-->
         <id column="student_id" property="studentId"/>
         <result column="user_sign" property="userSign"/>
+        <result column="list_id" property="listId"/>
 
     </resultMap>
 
@@ -37,7 +38,7 @@
     </update>
 
     <select id="getListByStuId" resultType="string">
-        SELECT list FROM customer WHERE student_id=#{studentId}
+        SELECT list_id FROM customer WHERE student_id=#{studentId}
     </select>
 
 </mapper>

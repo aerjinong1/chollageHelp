@@ -14,16 +14,17 @@ public class Lists implements Serializable {
 //    private static final Integer 已送达=3;
 //    private static final Integer 已完成=4;
 //    private static final Integer 已取消=9;
-    Integer listId;
-    Integer staffId;
-    Integer customerId;
-    String listCreateTime;
-    String ListCompleteTime;
-    Integer listState;
-    String customerMessage;
-    Integer listEvaluateLevel;   //用户评分
-    String ListEvaluateMessage;//用户评价
-    String startPoint;
-    String endPoint;
-    String pic;
+
+    private Integer listId;
+    private Integer staffId;
+    private Integer customerId;
+    private String listCreateTime;
+    private String ListCompleteTime;
+    private Integer listState;
+    private String customerMessage;
+    private Integer listEvaluateLevel;   //用户评分
+    private String ListEvaluateMessage;//用户评价
+    private String startPoint;
+    private String endPoint;
+    private String pic;
 }

@@ -9,5 +9,5 @@ public interface IListService {
 
     int acceptList(Lists lists);
 
-    Lists findListById(int lists);
+    Lists findListById(Integer lists);
 }

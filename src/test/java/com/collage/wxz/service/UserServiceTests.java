@@ -46,4 +46,9 @@ public class UserServiceTests {
         user.setEmail("999999");
         System.out.println(userservice.modifyUserData(user));
     }
+
+    @Test
+    public void getListByStuId(){
+        userservice.getListByStuId(1);
+    }
 }

@@ -1,4 +1,5 @@
 package com.collage.wxz.controller;
+
 import com.collage.wxz.entity.Lists;
 import com.collage.wxz.service.IListService;
 import com.collage.wxz.util.JsonResult;
@@ -15,30 +16,32 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
 @RequestMapping("list")
 public class ListController extends BaseController {
-@Autowired
+    @Autowired
     protected IListService iListService;
 
     @RequestMapping("addList")
     public JsonResult<Void> addList(HttpSession session, HttpServletRequest request,
-                                    @RequestParam(value = "file", required = false) MultipartFile file, Lists lists){
+                                    @RequestParam(value = "file", required = false) MultipartFile file, Lists lists) {
         System.out.println(lists.toString());
 //        System.out.println(file);
         lists.setListCreateTime(new Date().toString());
-        if (iListService.addList(lists)==1){
+        if (iListService.addList(lists) == 1) {
             return new JsonResult<>(OK);
-        }else{
-            return new JsonResult<>(6000 );
+        } else {
+            return new JsonResult<>(6000);
         }
     }
 
     SimpleDateFormat formatter = new SimpleDateFormat("/yyyy/MM/dd/");
+
     @RequestMapping("/upload")
-    public String fileUpload(MultipartFile file, HttpServletRequest request){
+    public String fileUpload(MultipartFile file, HttpServletRequest request) {
         System.out.println(file.toString());
         System.out.println(file.getName());
         System.out.println(file.getResource());
@@ -47,7 +50,7 @@ public class ListController extends BaseController {
         //图片上传服务器后所在的文件夹
         String realPath = request.getServletContext().getRealPath("/img") + time;
         File folder = new File(realPath);
-        if(!folder.exists())
+        if (!folder.exists())
             folder.mkdirs();
 
         //通常需要修改图片的名字（防止重复）
@@ -69,4 +72,14 @@ public class ListController extends BaseController {
         return null;
     }
 
+    @RequestMapping("/findListById")
+    public JsonResult<Lists> fileUpload(int ListId) {
+        System.out.println(ListId+"listid");
+        Lists lists = iListService.findListById(ListId);
+        if (lists == null) {
+            System.out.println("未找到订单，请重试");
+            return null;
+        }
+        return new JsonResult<>(OK, lists);
+    }
 }

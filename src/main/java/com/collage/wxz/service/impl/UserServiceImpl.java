@@ -10,6 +10,9 @@ import com.collage.wxz.service.ex.UsernameDuplicatedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements IUserservice {
 
@@ -61,6 +64,23 @@ public class UserServiceImpl implements IUserservice {
         System.out.println(usermapper.modifyUserData(user));
         return usermapper.modifyUserData(user);
 
+    }
+
+    @Override
+    public List getListByStuId(int stu_id) {
+        String strList = usermapper.getListByStuId(stu_id);
+        if (strList==null){
+            return null;
+        }
+        strList = strList.replace("[","").replace("]","");
+        
+        String[] list = strList.split(",");
+        List list1= new ArrayList();
+        for (String str:list
+             ) {
+            list1.add(Integer.parseInt(str));
+        }
+        return  list1;
     }
 
 
