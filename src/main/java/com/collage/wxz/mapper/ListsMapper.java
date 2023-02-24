@@ -13,4 +13,6 @@ public interface ListsMapper {
     Lists findListById(int listId);
 
     Integer acceptList(Lists lists);
+
+
 }

@@ -37,4 +37,10 @@ public class UserMapperTests {
         user.setGender(1);
         int res = usermapper.modifyUserData(user);
     }
+    @Test
+    public void findListByStuId(){
+        System.out.println(usermapper.getListByStuId(0));
+//        String list = usermapper.getListByStuId(0);
+//        System.out.println(list+"123");
+    }
 }

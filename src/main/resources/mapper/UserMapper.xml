@@ -36,5 +36,9 @@
         Where student_id=#{studentId}
     </update>
 
+    <select id="getListByStuId" resultType="string">
+        SELECT list FROM customer WHERE student_id=#{studentId}
+    </select>
+
 </mapper>
 

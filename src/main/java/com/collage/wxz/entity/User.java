@@ -21,4 +21,5 @@ public class User implements Serializable {
     private String email;
     private Integer tel;
     private String token;
+    private String list;
 }
